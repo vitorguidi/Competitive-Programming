@@ -1,0 +1,11 @@
+#!/bin/bash
+cd ~/Desktop/Coding/treino
+if [[ $(pidof tmux) ]] ; then
+    tmux a
+else
+    tmux new-session -d  'vim in.txt;zsh'
+    tmux split-window -h 'zsh -c "vim sketch.cpp"'
+    tmux select-pane -t 0
+    tmux split-window -v
+    tmux attach-session -d
+fi
