@@ -1,0 +1,57 @@
+C - Nivel de tensão (HARD)
+
+	- divide and conquer optimization
+	- calcula em o(log(k)) o indice otimo do j-esimo corte
+	- fica O(n²*log(k))
+
+	-tirar o terceiro for (no caso, o for dentro da pd recursiva que a gente codou) precisamos guardar uma matriz opt[i][j] que guarda o indice otimo de corte para o estado i=x,j=l
+	-supondo que temos esse opt[i][j], somente acessamos o indice de opt[i][j] ao inves de desenrolar o for de dentro da recursao do codigo da B
+
+	----> divide and conquer optimization vale pq nunca eh vantajoso, para mais gente (como o vetor esta ordenado, o cara q entrou tem valor maior ou igual aos anteriores), deixar mais caras
+	grandes agregados, entao eu mantenho ou cresço o grupo de caras pequenos agregados
+
+
+	--->	https://codeforces.com/blog/entry/8219
+
+E - Parque de diversoes
+
+	-define x como a quantidade de formas de chegar na celula atual pela esquerda
+	-define y como a quantidade de formas de chegar na celula atual pr cima
+	-valor esperado na celula atual = (x*valor esperado da celula da esquerda + y*valor esperado da celula da direita)/(x+y)
+
+	-> faz uma PD e reslve
+
+I - array forever
+
+	-seja qual for o maior gcd possivel do intervalo, ele necessariamente contem o fator primo mais frequente
+	-guarda somente os fatores primos que dividem o numero no array, nao os proprios numeros
+	-constroi uma seg no bruto mesmo, com uma struct que diz a frequencia de cada um dos fatores primos no itnervalo e define um merge
+	- pra cada query, simplesmente sai contando um a um dos fatores primos e da a resposta
+	- liite do problema eh 50000 no numero -> ha, no maximo, 300 primos estourando
+	-usa structzinha e ja era
+
+J - Kath and array game
+
+	-Monta segtree com intervalo ordenado pra saber qtd de boas e ruins no intervalo
+	-Troca somatorio escroto por uma PD:
+
+		dp[qtdBolinhasBoas][qtdBolinhasRuins][Z][diferençaBoasRuins]
+		 diferençaBoasRuins =  qtdQueElaGanhou - qtdQueElaPerdeu
+
+	-vc tem probabilidade qtdBoas / (qtdBoas + qtdRuins) de pegar uma bolinha boa, e qtdRuim / (qtdBoas + qtdRuins) de pegar uma bolinha ruim
+	então vc pode ir pro estado
+	dp[qtdBoas - 1][qtdRuins][z - 1][qtdGanha + 1] *  qtdBoas / (qtdBoas + qtdRuins)
+	pq eu gastei uma boa
+	(peguei ela)
+	mantive o numero de caras ruins
+
+	soma 80 de offset no quarto estado, pq ela pode perder mais do que ganhar e chamar indice negativo do vetor
+
+	eu particularmente costumo chamar a função com o offset
+	e no fim vejo que o valor do ultimo estado >= offsety
+
+	IDEIA DA PD:
+
+	guarda os doubles de probabilidades
+	caso base: se acabar aas esclohas, retorno 1 se ela ganhou ou 0 se ela eprdeu (baseado no 4 estado)
+
