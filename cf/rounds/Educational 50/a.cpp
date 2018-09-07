@@ -14,7 +14,8 @@ using namespace std;
 #define all(x)	x.begin(),x.end()
 
 #define gnl cout << endl
-#define olar cout << "olar" << endl
+#define pira cout << "pira" << endl
+#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL)
 
 typedef long long int ll;
 typedef pair<int,int> pii;
@@ -27,8 +28,10 @@ const ll llINF = 0x3f3f3f3f3f3f3f;
 
 int main(){
     
-    #define fastio ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+	  ll a; cin >> a;
+	  ll b; cin >> b;
+
+	  cout << (b+a-1)/a << endl;
 
 }
 
