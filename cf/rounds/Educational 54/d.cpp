@@ -50,6 +50,8 @@ void dijkstra(int v){
 		for(auto x : nodes[dad.snd]){
 			if(d[x.snd]>d[dad.snd]+x.fst){
 
+				fila.erase({d[x.snd],x.snd});
+
 				pai[x.snd] = dad.snd;
 				hgt[x.snd]=1+hgt[dad.snd];
 				
@@ -111,7 +113,7 @@ int main(){
 	m-=inutil;
 	check.clear();
 
-	while(m>k){
+	while(m>k && !aux.empty()){
 
 		auto it = aux.rbegin();
 		pii atual = *it;
