@@ -26,8 +26,8 @@ typedef pair<ll,ll> pll;
 const int INF = 0x3f3f3f3f;
 const ll llINF = 0x3f3f3f3f3f3f3f;
 
-int v[200200];
-map<int,int> freq;
+ll v[200200];
+map<ll,ll> freq;
 
 int main(){
     
@@ -49,10 +49,9 @@ int main(){
 		acum-=v[i];
 		freq[v[i]]--;
 	
-		if(acum%2ll==0 && freq[acum/2ll]>0){
-			acum;
+		if(acum%2ll==0 && freq[acum/2ll]>0)
 			ans.pb(i);
-		}
+		
 		freq[v[i]]++;
 		acum+=v[i];
 	}
@@ -63,4 +62,3 @@ int main(){
 	gnl;
 
 }
-

@@ -44,6 +44,16 @@ int main(){
 	for(auto it = freq.begin();it!=freq.end();it++)
 		repo.pb(it->snd);
 
+	sort(all(repo));
+	reverse(all(repo));
+
+	int len = repo.size();
+
+	while(len>20){
+		len--;
+		repo.pop_back();
+	}
+
 	multiset<ll> m1;
 
 	ll mx = -INF;
@@ -87,4 +97,3 @@ int main(){
 
 
 }
-
