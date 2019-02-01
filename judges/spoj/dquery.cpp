@@ -58,17 +58,10 @@ void remove(int val){
 
 int query(int x, int y){
 
-	while(r<y)
-		add(v[++r]);
-
-	while(l>x)
-		add(v[--l]);
-
-	while(r>y)
-		remove(v[r--]);
-
-	while(l<x)
-		remove(v[l++]);
+	while(r<y)		add(v[++r]);
+	while(l>x)		add(v[--l]);
+	while(r>y)		remove(v[r--]);
+	while(l<x)		remove(v[l++]);
 	
 	return ans;
 
