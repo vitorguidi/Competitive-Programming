@@ -40,6 +40,8 @@ bool check(){
 
 int main(){
 
+	fastio;
+
 	cin >> n >> m >> l;
 
 	fr(i,l){
@@ -69,7 +71,7 @@ int main(){
 	}
 
 	if(!check())
-		puts("-1");
+		cout << -1 << endl;
 	else
 		cout << cnt << endl;
 
